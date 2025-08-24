@@ -56,9 +56,9 @@ By automating the creation of a **Virtual Private Cloud (VPC)** and **Subnet**, 
 1. Clone the Repository
 
 ```
-git clone https://github.com/<your-username>/terraform-iac.git
+git clone https://github.com/Ab-Cloud-dev/TerraForm-Iac-.git
 
-cd Create-VPC-Subnet -Using-Terraform-Variables
+cd 01-Create-VPC-Subnet-Using-Terraform-Variables
 
 ```
 
@@ -68,6 +68,7 @@ Edit terraform.tfvars to match your desired names:
 
 ```
 kke_vpc_name   = "datacenter-vpc"
+
 kke_subnet_name = "datacenter-subnet"
 ```
 
@@ -90,6 +91,7 @@ terraform apply
 ## **Sample Outputs**
 
 kke_vpc_name = "datacenter-vpc"
+
 kke_subnet_name = "datacenter-subnet"
 
 ## **Benefits of Using Terraform for Networking**
