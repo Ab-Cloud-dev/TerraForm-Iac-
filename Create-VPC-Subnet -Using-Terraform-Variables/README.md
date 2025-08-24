@@ -37,6 +37,7 @@ By automating the creation of a **Virtual Private Cloud (VPC)** and **Subnet**, 
 ├── outputs.tf          # Outputs for verification and integration
 └── README.md           # Project documentation
 
+```
 
 ## **How It Works**
 
@@ -50,7 +51,7 @@ By automating the creation of a **Virtual Private Cloud (VPC)** and **Subnet**, 
 
 
 
-## **Steps to Deploy
+## **Steps to Deploy**
 
 1. Clone the Repository
 
@@ -73,13 +74,18 @@ kke_subnet_name = "datacenter-subnet"
 
 3. Initialize Terraform
 
+```
 terraform init
-
+```
 4. Apply the Configuration
-terraform apply
 
+```
+terraform apply
+```
 5. Verify Outputs
-terraform output
+
+   <img width="2000" height="407" alt="image" src="https://github.com/user-attachments/assets/d836077e-44c0-4e8e-acc4-3aa47b3cb596" />
+
 
 ## **Sample Outputs**
 
