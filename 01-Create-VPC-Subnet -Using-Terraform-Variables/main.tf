@@ -1,3 +1,18 @@
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "6.10.0"
+    }
+  }
+}
+
+
+provider "aws" {
+  region = "us-east-1" # Change to your desired region
+}
+
+
 # Create VPC
 resource "aws_vpc" "datacenter_vpc" {
   cidr_block = "10.0.0.0/16"
