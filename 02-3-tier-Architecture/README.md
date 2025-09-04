@@ -94,8 +94,8 @@ Before deploying this infrastructure, ensure you have:
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
-cd aws-three-tier-infrastructure
+git clone [<repository-url>](https://github.com/Ab-Cloud-dev/TerraForm-Iac-.git)
+cd 02-3-tier-Architecture/
 ```
 
 ### 2. Configure Terraform Variables
