@@ -20,6 +20,8 @@ Internet Gateway
    Database Subnets (RDS MySQL)
 ```
 
+
+
 ## 🚀 Features
 
 - **High Availability**: Multi-AZ deployment across two availability zones
