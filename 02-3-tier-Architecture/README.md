@@ -1,10 +1,12 @@
 # AWS Three-Tier Web Application Infrastructure
 
 A complete Infrastructure as Code (IaC) implementation using Terraform to deploy a scalable, secure three-tier web application on AWS with load balancing, database connectivity, and bastion host access.
-
+![](https://github.com/Ab-Cloud-dev/TerraForm-Iac-/blob/main/02-3-tier-Architecture/Gif.gif)
 ## 🏗️ Architecture Overview
 
 This project demonstrates the deployment of a production-ready web application infrastructure following AWS best practices for security, scalability, and high availability.
+
+
 
 ### Architecture Components
 
@@ -292,29 +294,8 @@ terraform plan -detailed-exitcode
 - [ ] Cost optimization automation
 - [ ] Security compliance automation
 
-## 📝 Project Structure
 
-```
-aws-three-tier-infrastructure/
-├── main.tf                 # Main Terraform configuration
-├── variables.tf           # Variable definitions
-├── outputs.tf             # Output definitions
-├── terraform.tfvars       # Variable values (not in repo)
-├── modules/
-│   ├── vpc/               # VPC module
-│   ├── security-groups/   # Security groups module
-│   ├── alb/               # Load balancer module
-│   ├── ec2/               # EC2 instances module
-│   └── rds/               # Database module
-├── scripts/
-│   └── user-data.sh       # EC2 initialization script
-├── docs/
-│   ├── architecture.png   # Architecture diagram
-│   └── setup-guide.md     # Detailed setup guide
-└── README.md              # This file
-```
 
-## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
@@ -325,16 +306,8 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Author
-
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
 
 ## 🙏 Acknowledgments
 
