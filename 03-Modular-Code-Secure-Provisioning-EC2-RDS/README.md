@@ -54,7 +54,7 @@ Below screenshot showcasing RDS provision with the secret Key
 
 <img width="2000" height="281" alt="image" src="https://github.com/user-attachments/assets/f45ed160-f287-4f35-851e-706b64d6e8b4" />
 
-**🎭 3. ACCESS CONTROL (Principle of Least Privilege)**
+## **🎭 3. ACCESS CONTROL (Principle of Least Privilege)**
 
 ### **IAM Role Restrictions:**
 
@@ -75,6 +75,9 @@ json
 - No other AWS permissions
 
 **Result:** Compromise of EC2 doesn't expose other secrets.
+
+---
+
 ## 📁 Directory Structure
 
 ```
@@ -101,6 +104,8 @@ json
         ├── variables.tf
         └── outputs.tf
 ```
+
+---
 
 ## 🚀 Deployment Instructions
 
