@@ -1,24 +1,80 @@
-# Secure AWS Infrastructure with Terraform
+# **Secure AWS Infrastructure with Terraform**
 
-This Terraform configuration creates a secure AWS infrastructure with:
+This Terraform configuration provisions the RDS with the AWS Secrets Manager for credential management and EC2 instance with user_data.sh scripts which execute and create the Environment Variables for securely using the keys without exposing it 
 
-- VPC with public/private subnets
-- EC2 instance in public subnet
-- RDS MySQL database in private subnet
-- **AWS-managed secrets (NO passwords in Terraform state)**
-- KMS encryption for secrets
-- Proper security groups and IAM roles
+**WHY THIS ARCHITECTURE IS SECURE**
 
-## 🔐 Security Features
+This project implements **enterprise-grade security** through multiple layers of protection. Here's why it's secure:
 
-✅ **No passwords in Terraform state file**  
-✅ **AWS manages RDS passwords automatically**  
-✅ **KMS encryption for secrets**  
-✅ **Encrypted EBS volumes**  
-✅ **Proper security group isolation**  
-✅ **IAM roles with minimal permissions*
+## **🛡️ 1. NETWORK ISOLATION (Zero Trust Network)**
+
+### **Physical Separation:**
+
+- **RDS in PRIVATE subnets** → No internet access possible
+- **EC2 in PUBLIC subnet** → Only for web serving
+- **Security Groups act as firewalls** → Granular traffic control
+
+### **Traffic Flow Control:**
+
+```
+✅ Internet → EC2 (web traffic)
+✅ EC2 → RDS (database queries) 
+❌ Internet → RDS (BLOCKED)
+✅ EC2 → AWS APIs (encrypted)
+```
+
+**Result:** Database is completely isolated from the internet.
+
+## **🔑 2. CREDENTIAL MANAGEMENT (No Secrets Exposed)**
+
+### **AWS Secrets Manager:**
+
+- **Passwords encrypted at rest** with AWS KMS
+- **Encrypted in transit** via TLS
+- **No hardcoded passwords** anywhere in code
+- **Automatic rotation capability** (when needed)
+- **Full audit trail** of all access
+
+### **What's NOT stored insecurely:**
+
+❌ No passwords in Terraform code  
+❌ No passwords in environment variables  
+❌ No passwords in log files  
+❌ No passwords in version control  
+❌ No passwords in user_data scripts
+
+**Result:** Credentials never exist in plain text.
 
 
+
+Below screenshot showcasing RDS provision with the secret Key 
+
+<img width="2000" height="1025" alt="image" src="https://github.com/user-attachments/assets/f8acea16-c588-4500-9223-d31b681a3831" />
+
+
+<img width="2000" height="281" alt="image" src="https://github.com/user-attachments/assets/f45ed160-f287-4f35-851e-706b64d6e8b4" />
+
+**🎭 3. ACCESS CONTROL (Principle of Least Privilege)**
+
+### **IAM Role Restrictions:**
+
+json
+
+```json
+{
+  "Effect": "Allow",
+  "Action": ["secretsmanager:GetSecretValue"],
+  "Resource": "arn:aws:secretsmanager:...my-app-secret-ONLY"
+}
+```
+
+**EC2 can ONLY:**
+
+- Read ONE specific secret (not all secrets)
+- Decrypt with ONE specific KMS key
+- No other AWS permissions
+
+**Result:** Compromise of EC2 doesn't expose other secrets.
 ## 📁 Directory Structure
 
 ```
@@ -228,6 +284,7 @@ echo "export DB_NAME=your-database-name" >> /etc/profile.d/rds_env.sh
 # Set permissions for the environment file
 chmod 600 /etc/profile.d/rds_env.sh
 ```
+<img width="1512" height="448" alt="image" src="https://github.com/user-attachments/assets/c3e5970f-0eb5-4bd4-805e-926cf0910b76" />
 
 
 ---
